@@ -1,0 +1,16 @@
+npm install -g @nestjs/cli
+
+cd chapter8
+nest new blog
+
+
+
+cd blog
+npm install
+npm run start
+
+# src 폴더 안 module, main 제외 삭제하고 다시 만들기
+
+blog 폴더가 push가 안되며 repository를 보면 폴더에 화살표 모양으로 돠어 있다.
+이유 => blog 폴더 하위에 .git 이 있기 때문(ls -al로 보기)
+해결 => .git을 삭제해주고 다시 add commit push를 해주면 해결된다.
