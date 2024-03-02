@@ -1,6 +1,10 @@
 import { Injectable } from "@nestjs/common";
+import { Model } from "mongoose";
+import { Blog, BlogDocument } from "./blog.schema";
+
 import { readFile, writeFile } from "fs/promises";
 import { PostDto } from "./blog.model";
+import { InjectModel } from "@nestjs/mongoose";
 
 
 //블로그 repository 인터페이스 정의
@@ -63,5 +67,48 @@ export class BlogFileRepository implements BlogRepository{
         posts[index] = updatePost;
 
         await writeFile(this.FILE_NAME, JSON.stringify(posts));
+    }
+}
+
+@Injectable()
+//몽고DB용 repository
+export class BlogMongoRepository implements BlogRepository{
+
+    //Model<BlogDocument> 타입인 blogModel 주입
+    //게시글을 읽기, 쓰기, 수정, 삭제 메서드를 가지고 있는 모델을 주입받는다. 
+    //@nestjs/mongoose의 @InjectModel 데코레이터를 사용하면 된다.
+    constructor(@InjectModel(Blog.name) private blogModel: Model<BlogDocument>){}
+
+    //모든 게시글을 읽어오는 함수
+    async getAllPost(): Promise<Blog[]> {
+        return await this.blogModel.find().exec();
+    }
+
+    //게시글 작성
+    async createPost(postDto: PostDto) {
+        const createPost = {
+            ...postDto,
+            createdDt: new Date(),
+            updatedDt: new Date(),
+        };
+
+        this.blogModel.create(createPost);
+    }
+
+    //하나의 게시글 읽기
+    async getPost(id: String): Promise<PostDto> {
+        return await this.blogModel.findById(id);
+    }
+
+    //하나의 게시글 삭제
+    async deletePost(id: String) {
+        await this.blogModel.findByIdAndDelete(id);
+    }
+
+    //게시글 업데이트
+    async updatePost(id: String, postDto: PostDto) {
+        const updatedPost = {id, ...postDto, updatedDt: new Date()};
+
+        await this.blogModel.findByIdAndUpdate(id, updatedPost);
     }
 }

@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import {PostDto} from './blog.model';
-import { BlogFileRepository, BlogRepository } from './blog.repository';
-
+// import { BlogFileRepository, BlogRepository } from './blog.repository';
+//BlogFileRepository를 사용하는 부분을 만든 BlogMongoRepository로 변경해준다. 
+import { BlogMongoRepository } from './blog.repository';
+ 
 @Injectable()
 export class BlogService{
 
@@ -9,7 +11,7 @@ export class BlogService{
     //NestJS에서 자동으로 필요한 객체를 주입해준다. BlogRepository는 "인터페이스"이므로 클래스를 생성할 수 없다. 
     //따라서 의존성 주입(@Injectable())을 할 수 없다. 
     //의존성 주입을 할 때는 실제로 사용할 "클래스"를 타입으로 주면 된다. 
-    constructor(private blogRepository: BlogFileRepository){}
+    constructor(private blogRepository: BlogMongoRepository){}
     // private blogRepository: BlogFileRepository; // 위 코드를 요약할 수 있다
 
     async getAllPosts(){
