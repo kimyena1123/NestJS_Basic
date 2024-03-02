@@ -27,10 +27,15 @@ export class BlogController{
     }
 
     @Get('/:id')
-    getPost(@Param('id') id: string){
+    //비동기를 지원하는 메서드로 시그니처 변경
+    async getPost(@Param('id') id: string){
         console.log(`[id: ${id}] 게시글 하나 가져오기`)
 
-        return this.blogService.getPost(id);
+        //블로그 서비스에서 사용하는 메서드가 비동기로 변경되었으므로 await 사용
+        const post = await this.blogService.getPost(id);
+        console.log(post);
+         
+        return post;
     }
 
     @Delete('/:id')
