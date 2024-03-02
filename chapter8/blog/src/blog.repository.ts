@@ -1,5 +1,7 @@
+import { Injectable } from "@nestjs/common";
 import { readFile, writeFile } from "fs/promises";
 import { PostDto } from "./blog.model";
+
 
 //블로그 repository 인터페이스 정의
 export interface BlogRepository{
@@ -11,6 +13,7 @@ export interface BlogRepository{
 }
 
 //BlogRepository를 구현한 클래스. 파일을 읽고 쓰기
+@Injectable()
 export class BlogFileRepository implements BlogRepository{
 
     FILE_NAME = './src/blog.data.json';

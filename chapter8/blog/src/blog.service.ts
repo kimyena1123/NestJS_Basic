@@ -1,15 +1,16 @@
+import { Injectable } from '@nestjs/common';
 import {PostDto} from './blog.model';
 import { BlogFileRepository, BlogRepository } from './blog.repository';
 
-
+@Injectable()
 export class BlogService{
-    // posts = []; // 게시글 배열 선언
-    blogRepository: BlogRepository;
 
-    constructor(){
-        //블로그 repository 객체 생성
-        this.blogRepository = new BlogFileRepository();
-    }
+    //클래스의 생성자에 매개변수로 설정된 타입이 프로바이더로 설정된 타입 중 하나라면,
+    //NestJS에서 자동으로 필요한 객체를 주입해준다. BlogRepository는 "인터페이스"이므로 클래스를 생성할 수 없다. 
+    //따라서 의존성 주입(@Injectable())을 할 수 없다. 
+    //의존성 주입을 할 때는 실제로 사용할 "클래스"를 타입으로 주면 된다. 
+    constructor(private blogRepository: BlogFileRepository){}
+    // private blogRepository: BlogFileRepository; // 위 코드를 요약할 수 있다
 
     async getAllPosts(){
         return await this.blogRepository.getAllPost();
