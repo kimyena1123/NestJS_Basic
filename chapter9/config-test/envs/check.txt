@@ -1,0 +1,6 @@
+cofig-test 서비스 URL이 환경별로 각각 
+local : http://localhost:3000
+dev : http://dev.config-test.com
+prod : http://config-test.com
+
+// http://config-test.com은 존재하지 않는 웹사이트이다. 환경 변수 테스트를 위해 가정한 URL이다. 

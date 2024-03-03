@@ -11,4 +11,9 @@ export class AppController{
     
     return message;
   }
+
+  @Get('service-url-check')
+  getServiceUrl(): string{
+    return this.configService.get('SERVICE_URL');
+  }
 }
