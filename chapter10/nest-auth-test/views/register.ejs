@@ -1,0 +1,69 @@
+AQ1W2E3R45P0-[=]]=[-P0RT54E3W2Q1	`1<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <h1><%= title %></h1>
+
+
+    <!-- AXIOS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <h1>회원가입을 해보자!</h1>
+    
+    <form id="registerForm" name="registerForm">
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="password">비밀번호</label>
+        <input type="password" id="password"><br><br>
+
+        <label for="username">유저이름</label>
+        <input type="text" id="username"><br><br>
+
+        <button type="button" id="registBtn" onclick="axiosPost()">회원가입</button>
+    </form>
+
+    <script>
+        function axiosPost(){
+            console.log("########click axiosPost###########");
+
+            //폼선택
+            const form = document.forms['registerForm'];
+
+            console.dir(form);
+            console.log(form);
+            console.dir(form.email);
+            console.dir("email>> " +  form.email.value);
+            console.dir("password>> " + form.password.value);
+            console.dir("username>> " + form.username.value);
+
+            const data = {
+                email: form.email.value,
+                password: form.password.value,
+                username: form.username.value,
+            };
+
+            axios({
+                method: 'POST',
+                url: '/user/create',
+                data: data,
+            }).then(function(response){
+                console.log(response);
+                console.log(response.data);
+                console.log(response.data.email);
+                console.log(response.data.username);
+
+                console.log("success");
+            })
+            
+        }
+    </script>
+
+
+
+</body>
+</html>
