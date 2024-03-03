@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post, Param, Put, Delete } from "@nestjs/common";
 import { User } from "./user.entity";
 import { UserService } from "./user.service";
+import { CreateUserDto, UpdateUserDto } from "./user.dto";
 
 @Controller('user') //localhost:3000/user 로 시작한다.
 export class UserController{
@@ -10,7 +11,7 @@ export class UserController{
 
     //유저 생성
     @Post('/create') //localhost:3000/user/create
-    createUser(@Body() user: User){
+    createUser(@Body() user: CreateUserDto){
         return this.userService.createUser(user);
     }
 
@@ -25,7 +26,7 @@ export class UserController{
 
     //email로 해당 유저 정보 수정하기(업데이트)
     @Put('/update/:email') //localhost:3000/user/update/[email정보]
-    updateUser(@Param('email') email: string, @Body() user: User){
+    updateUser(@Param('email') email: string, @Body() user: UpdateUserDto){
         console.log(user);
 
         return this.userService.updateUser(email, user);
