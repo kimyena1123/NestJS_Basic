@@ -24,4 +24,15 @@ export class AppController{
 
     return this.configService.get('dbInfo'); //웹 브라우저에 dbInfo 표시
   }
+  
+  @Get('redis-info')
+  getRedisInfo(): string{
+    return `${this.configService.get('redis.host')}: ${this.configService.get('redis.port')}`;
+  }
+
+
+
+
+
+  
 }
