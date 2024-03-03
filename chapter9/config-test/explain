@@ -1,0 +1,2 @@
+확장 변수(expandable variables)는 이미 선언된 변수를 다른 변수에 ${변수명}으로 할당하는 기능이다.
+확장 변수는 내부적으로는 dotenv-expand 패키지를 사용한다

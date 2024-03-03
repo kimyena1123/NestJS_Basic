@@ -16,6 +16,9 @@ console.log('current working directory: ' + process.cwd()); //현재 디렉토�
   imports: [ConfigModule.forRoot({isGlobal: true,
                                   envFilePath: `${process.cwd()}/envs/${process.env.NODE_ENV}.env`,
                                   load: [config], //커스텀 설정 파일 설정
+                                  //cache: true를 사용하면 ConfigService의 get()함수를 사용할 때 캐시에서 먼저 불러오게 되므로 성능상의 이점이 있다. 
+                                  cache: true, 
+                                  expandVariables: true, //확장 변수 옵션 추가
                                 }), 
                                 WeatherModule, 
            ], //전역 모듈 설정 추가

@@ -12,9 +12,9 @@ export class AppController{
     return message;
   }
 
-  @Get('service-url-check')
+  @Get('service-url')
   getServiceUrl(): string{
-    return this.configService.get('SERVICE_URL');
+    return this.configService.get('SERVER_URL'); 
   }
 
   @Get('db-info')
