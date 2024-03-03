@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({ //sqlite 설정 메서드
@@ -13,7 +14,8 @@ import { User } from './user/user.entity';
                         synchronize: true, //데이텀베이스에 스키마를 동기화
                         logging: true, //SQL 실행 로그 확인
                       }),
-            UserModule
+            UserModule,
+            AuthModule
           ],
   controllers: [AppController],
   providers: [AppService],

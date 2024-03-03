@@ -14,7 +14,7 @@ export class UserController{
     createUser(@Body() user: CreateUserDto){
         return this.userService.createUser(user);
     }
-
+    
     //유저 한 명 찾기(email로 한 행 정보 가져오기)
     @Get('/getUser/:email') //localhost:3000/user/getUser/[email정보]
     async getUser(@Param('email') email: string){

@@ -1,0 +1,21 @@
+### 회원가입
+# 이미 있는 내용으로 회원가입하면 400 에러 발생한다.
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "email": "andy1@podo.com",
+    "password": "1234",
+    "username": "andy"
+}
+
+### 회원가입
+# 새로운 정보로 회원가입해보자
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "email": "yena@test.com",
+    "password": "1234",
+    "username": "andy"
+}
