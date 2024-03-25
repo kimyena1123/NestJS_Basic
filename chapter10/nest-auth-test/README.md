@@ -33,3 +33,16 @@ npm install sqlite3 typeorm @nestjs/typeorm
 ```
 npm run start:dev
 ```
+
+# 파이프로 유효성 검증하기
+ValidationPipe를 사용하려면 class-validator와 class-tranformer를 설치해야 한다. 
+1. class-tranformer는 JSON 정보를 "클래스 객체"로 변경한다. 
+받은 요청(payload)을 변환한 클래스가 controller의 핸들러 메서드의 매개변수에 선언되어 있는 클래스와 같다면 유효성 검증을 한다. 
+2. class-validator는 데코레이터를 사용해 간편하게 유효성 검증을 하는 라이브러리이다. 
+
+
+## 전역 ValidationPipe tjfwjdgkrl
+유효성 검증을 하려면 ValidationPipe를 main.ts에 설정해야 한다. (의존성 설치 -> 임포트 -> 전역 파이프 설정에 ValidationPipe객체를 생성해 넣기)
+```
+npm install class-validator class-transformer
+```
