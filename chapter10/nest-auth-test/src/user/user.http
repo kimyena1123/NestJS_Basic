@@ -23,3 +23,14 @@ Content-Type: application/json
 
 ### DELETE User dbwj tkrwp
 DELETE http://localhost:3001/user/delete/andy@podo.com
+
+
+### 잘못된 이메일을 입력한 경우
+POST http://localhost:3001/user/create
+Content-Type: application/json
+
+{
+    "username": "yena",
+    "password": "test1234",
+    "email": "yena.com",
+}

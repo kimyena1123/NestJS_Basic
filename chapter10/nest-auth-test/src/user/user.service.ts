@@ -4,7 +4,7 @@ import { Repository } from 'typeorm'; //repository 임포트
 import { User } from './user.entity';
 
 
-//Injectable 데코레이터가 있으면 provider가 된다.
+//Injectable 데코레이터가 있으면 provider가 된다. 모듈에 설정을 하면 다른 객체에 주입할 수 있다.
 @Injectable()
 export class UserService {
     constructor(

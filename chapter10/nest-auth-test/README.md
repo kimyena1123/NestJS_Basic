@@ -41,7 +41,7 @@ ValidationPipe를 사용하려면 class-validator와 class-tranformer를 설치�
 2. class-validator는 데코레이터를 사용해 간편하게 유효성 검증을 하는 라이브러리이다. 
 
 
-## 전역 ValidationPipe tjfwjdgkrl
+## 전역 ValidationPipe 설정하기
 유효성 검증을 하려면 ValidationPipe를 main.ts에 설정해야 한다. (의존성 설치 -> 임포트 -> 전역 파이프 설정에 ValidationPipe객체를 생성해 넣기)
 ```
 npm install class-validator class-transformer
@@ -56,3 +56,17 @@ npm install class-validator class-transformer
   1. 쿠키를 기반으로 만들거나
   2. 토큰 기반으로 만들 수 있다. (쿠키가 없는 토큰 기반을 쿠키리스라고 부름)
     쿠키는 서버에서 보낸준 크키를 클라이언트에 저장해 관리한다. 토큰은 서버에 상태를 저장할 필요가 없다. 
+
+## 인증 모듈 만들기 및 설정하기
+```
+nest g module auth
+nest g service auth --no-spec
+nest g controller auth --no-spec
+```
+
+###  회원 가입 메서드 만들기
+UserService 클래스의 createUser를 사용해도 되지만, 비밀번호와 같은 민감한 정보는 무조건 암호화 해야 한다.
+```
+npm install bcrypt
+npm install -D @types/bcrypt
+```

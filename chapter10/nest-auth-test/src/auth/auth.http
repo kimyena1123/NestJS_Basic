@@ -1,0 +1,9 @@
+### 회원가입
+POST http://localhost:3001/auth/register
+Content-Type: application/json
+
+{
+    "email": "yena@test.com",
+    "password": "1234",
+    "username": "yena"
+}
