@@ -28,3 +28,8 @@ SQLite3와 typeORM, typeorm을 nest에서 편하게 사용하기 위한 @nestjs/
 ```
 npm install sqlite3 typeorm @nestjs/typeorm
 ```
+
+## 서버 기동
+```
+npm run start:dev
+```

@@ -1,0 +1,25 @@
+### create 유저 생성
+POST http://localhost:3001/user/create
+Content-Type: application/json
+
+{
+    "username": "andy",
+    "password": "1234",
+    "email": "andy@podo.com"
+}
+
+### GetUser 유저 정보 찾기
+GET http://localhost:3001/user/getUser/andy@podo.com
+
+### PUT update user 유저 정보 업데이트
+PUT http://localhost:3001/user/update/andy@podo.com
+Content-Type: application/json
+
+{
+    "email": "andy@podo.com",
+    "username": "andy2",
+    "password": "test12345",
+}
+
+### DELETE User dbwj tkrwp
+DELETE http://localhost:3001/user/delete/andy@podo.com
