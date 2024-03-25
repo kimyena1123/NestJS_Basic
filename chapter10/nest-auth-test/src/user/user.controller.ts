@@ -8,7 +8,7 @@
 
 //유저가 HTTP 요청을 보내면 UserController -> UserService -> UserRepository 순으로 호출한다. 
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { User } from './user.entity';
+import { CreateUserDto, UpdateUserDto } from './user.dto';
 import { UserService } from './user.service';
 
 //localhost:PORT/user
@@ -17,7 +17,7 @@ export class UserController {
     constructor(private userService: UserService){} //유저 서비스 주입
 
     @Post('/create') //localhost:PORT/user/create
-    createUser(@Body() user: User){
+    createUser(@Body() user: CreateUserDto){
         return this.userService.createUser(user);
     }
 
@@ -30,7 +30,7 @@ export class UserController {
     }
 
     @Put('/update:/email')
-    updateUser(@Param('email') email: string, @Body() user: User){
+    updateUser(@Param('email') email: string, @Body() user: UpdateUserDto){
         console.log(user);
 
         return this.userService.updateUser(email, user);
