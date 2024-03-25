@@ -7,3 +7,12 @@ Content-Type: application/json
     "password": "1234",
     "username": "yena"
 }
+
+### 로그인
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
+    "email": "yena@test.com",
+    "password": "1234"
+}
